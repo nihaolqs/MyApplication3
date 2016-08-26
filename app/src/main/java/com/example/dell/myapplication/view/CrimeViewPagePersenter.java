@@ -17,5 +17,7 @@ public class CrimeViewPagePersenter {
         this.mCrimeBiz = new CrimeBiz(context);
     }
 
+
+
 //    public void
 }

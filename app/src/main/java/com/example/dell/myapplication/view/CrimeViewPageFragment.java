@@ -23,6 +23,8 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
     private View mLayout;
     private LayoutInflater mInflater;
     private CrimeViewPagePersenter mCrimeViewPagePersenter;
+    private ViewPager mViewPager;
+    private PagerAdapter mPagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,9 +37,25 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
     }
 
     private void initUi() {
-        ViewPager mViewPager = (ViewPager) mLayout.findViewById(R.id.vp_cvpf_crimes);
-        PagerAdapter mPagerAdapter = new MyCrimePagerAdapter();
+        mViewPager = (ViewPager) mLayout.findViewById(R.id.vp_cvpf_crimes);
+        mPagerAdapter = new MyCrimePagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void initParam(LayoutInflater inflater) {
