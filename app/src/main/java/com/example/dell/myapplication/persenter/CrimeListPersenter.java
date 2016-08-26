@@ -8,6 +8,7 @@ import com.example.dell.myapplication.bean.Crime;
 import com.example.dell.myapplication.biz.CrimeBiz;
 import com.example.dell.myapplication.biz.ICrimeBiz;
 import com.example.dell.myapplication.util.Contance;
+import com.example.dell.myapplication.view.CrimeViewPageActivity;
 import com.example.dell.myapplication.view.ICrimeListView;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class CrimeListPersenter {
 
     public void showCrime(Crime crime)
     {
-        Intent intent = new Intent();
+        Intent intent = new Intent(mContext,CrimeViewPageActivity.class);
 
         intent.putExtra(Contance.CRIME_INTENT_KEY,crime.getmCrimeId());
 //        Log.e("showCrime","startActivity");

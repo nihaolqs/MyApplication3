@@ -8,5 +8,6 @@ public interface ICrimeView {
     void setCrimeTitle();
     boolean getIsSolved();
     void setIsSolved();
+    void setDate();
 
 }

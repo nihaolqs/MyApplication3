@@ -37,4 +37,10 @@ public class CrimeViewPagePersenter {
         String title = mCrimeViewPageView.getTitle();
         mCrimeViewPageView.setActivityTitle(title);
     }
+
+    public void showCrimeViewPage(UUID uuid)
+    {
+        mCrimeViewPageView.replaceViewPage();
+        mCrimeViewPageView.showCrimePage(uuid);
+    }
 }

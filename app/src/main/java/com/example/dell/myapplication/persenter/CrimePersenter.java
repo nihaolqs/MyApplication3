@@ -82,4 +82,11 @@ public class CrimePersenter {
     {
         return this.mCrime.getmDate();
     }
+
+    public void replaceView()
+    {
+        crimeView.setCrimeTitle();
+        crimeView.setIsSolved();
+        crimeView.setDate();
+    }
 }

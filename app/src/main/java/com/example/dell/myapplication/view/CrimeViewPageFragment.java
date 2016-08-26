@@ -13,7 +13,9 @@ import com.example.dell.myapplication.R;
 import com.example.dell.myapplication.adapter.MyCrimePagerAdapter;
 import com.example.dell.myapplication.bean.Crime;
 import com.example.dell.myapplication.persenter.CrimeViewPagePersenter;
+import com.example.dell.myapplication.util.Contance;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +38,8 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
         mLayout = inflater.inflate(R.layout.fragment_crime_view_page, container, false);
         initParam(inflater);
         initUi();
+        UUID uuid = (UUID) getArguments().getSerializable(Contance.CRIME_INTENT_KEY);
+        mCrimeViewPagePersenter.showCrimeViewPage(uuid);
         return mLayout;
     }
 
@@ -66,8 +70,12 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
         this.mInflater = inflater;
     }
 
-    public static Fragment getInstance() {
-        return null;
+    public static Fragment getInstance(UUID uuid) {
+        CrimeViewPageFragment fragment = new CrimeViewPageFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Contance.CRIME_INTENT_KEY,uuid);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override

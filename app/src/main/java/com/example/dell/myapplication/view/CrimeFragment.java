@@ -22,6 +22,7 @@ import com.example.dell.myapplication.util.Contance;
 import com.example.dell.myapplication.util.Utils;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -43,6 +44,8 @@ public class CrimeFragment extends Fragment implements ICrimeView{
         UUID uuid = (UUID) arguments.getSerializable(Contance.CRIME_INTENT_KEY);
         this.mCrimePersenter = new CrimePersenter(this,getContext(),uuid);
 //        this.mCrime = new Crime();
+
+
     }
 
     public static Fragment getInstance(UUID uuid)    //降低与托管Activity的耦合,方便进行复用
@@ -60,6 +63,7 @@ public class CrimeFragment extends Fragment implements ICrimeView{
         // Inflate the layout for this fragment
         mLayout = inflater.inflate(R.layout.fragment_crime, container, false);
         initUI();
+        this.mCrimePersenter.replaceView();
         return mLayout;
     }
 
@@ -124,5 +128,11 @@ public class CrimeFragment extends Fragment implements ICrimeView{
     public void setIsSolved() {
         boolean solved = mCrimePersenter.isSolved();
         mCbCrimeSolved.setChecked(solved);
+    }
+
+    @Override
+    public void setDate() {
+        Date date = mCrimePersenter.getDate();
+        this.mBtnDate.setText(Utils.DateFormat(date));
     }
 }
