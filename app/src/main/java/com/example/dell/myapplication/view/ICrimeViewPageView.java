@@ -7,4 +7,7 @@ import java.util.UUID;
  */
 public interface ICrimeViewPageView {
     void showCrimePage(UUID uuid);
+    void replaceViewPage();
+    String getTitle();
+    void setActivityTitle(String title);
 }

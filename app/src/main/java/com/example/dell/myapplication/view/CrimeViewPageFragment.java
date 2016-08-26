@@ -51,7 +51,7 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
 
             @Override
             public void onPageSelected(int position) {
-
+                mCrimeViewPagePersenter.setToolBarTitle();
             }
 
             @Override
@@ -84,9 +84,22 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
         }
     }
 
-    private void notifyDataSetChanged()
+    @Override
+    public void replaceViewPage()
     {
         List<Crime> crimes = this.mCrimeViewPagePersenter.getCrimes();
         this.mPagerAdapter.notifyDataSetChanged(crimes);
+    }
+
+    @Override
+    public String getTitle() {
+        int item = mViewPager.getCurrentItem();
+        String crimeTitle = mCrimeViewPagePersenter.getCrimes().get(item).getmCrimeTitle();
+        return crimeTitle;
+    }
+
+    @Override
+    public void setActivityTitle(String title) {
+        getActivity().setTitle(title);
     }
 }
