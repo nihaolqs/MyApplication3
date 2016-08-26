@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/cb_crime_list_item_solvednow"
+        android:layout_margin="15dp"
+
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:textSize="24sp"
+            android:id="@+id/tv_crime_list_item_crimetitle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:textSize="18sp"
+            android:layout_marginTop="9dp"
+            android:id="@+id/tv_crime_list_item_crimedate" />
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_crime_list_item_solvednow"
+        android:textSize="18sp"
+        android:layout_margin="15dp"
+        android:focusable="false"
+        android:enabled="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+ />
+</RelativeLayout>
