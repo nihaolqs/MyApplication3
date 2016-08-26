@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.dell.myapplication.R;
 import com.example.dell.myapplication.adapter.MyCrimePagerAdapter;
+import com.example.dell.myapplication.persenter.CrimeViewPagePersenter;
 
 import java.util.UUID;
 
