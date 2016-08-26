@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 
 import com.example.dell.myapplication.R;
 import com.example.dell.myapplication.adapter.MyCrimePagerAdapter;
+import com.example.dell.myapplication.bean.Crime;
 import com.example.dell.myapplication.persenter.CrimeViewPagePersenter;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -25,7 +27,7 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
     private LayoutInflater mInflater;
     private CrimeViewPagePersenter mCrimeViewPagePersenter;
     private ViewPager mViewPager;
-    private PagerAdapter mPagerAdapter;
+    private MyCrimePagerAdapter mPagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +72,21 @@ public class CrimeViewPageFragment extends Fragment implements ICrimeViewPageVie
 
     @Override
     public void showCrimePage(UUID uuid) {
+        List<Crime> crimes = mCrimeViewPagePersenter.getCrimes();
+        for (int i = 0; i < crimes.size(); i++)
+        {
+            Crime crime = crimes.get(i);
+            if(crime.getmCrimeId().equals(uuid))
+            {
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
+    }
 
+    private void notifyDataSetChanged()
+    {
+        List<Crime> crimes = this.mCrimeViewPagePersenter.getCrimes();
+        this.mPagerAdapter.notifyDataSetChanged(crimes);
     }
 }
