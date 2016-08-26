@@ -1,10 +1,12 @@
 package com.example.dell.myapplication.persenter;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import com.example.dell.myapplication.bean.Crime;
 import com.example.dell.myapplication.biz.CrimeBiz;
 import com.example.dell.myapplication.biz.ICrimeBiz;
+import com.example.dell.myapplication.view.DatePickerFragment;
 import com.example.dell.myapplication.view.ICrimeView;
 
 import java.util.Date;
@@ -16,14 +18,16 @@ import java.util.UUID;
  * 提交后保存到单实例CrimeLab对象中
  */
 public class CrimePersenter {
+    private static final String DIALOG_DATE = "date";
     private ICrimeView crimeView;
     private ICrimeBiz crimeBiz;
     private Crime mCrime;
-//    private Context mContext;
+    private Context mContext;
 
     public CrimePersenter(ICrimeView crimeView, Context context, UUID uuid) {
 
         this.crimeView = crimeView;
+        this.mContext = context;
         this.crimeBiz = new CrimeBiz(context);
         Crime crime = crimeBiz.readCrime(uuid);
         if(crime ==null)
@@ -88,5 +92,11 @@ public class CrimePersenter {
         crimeView.setCrimeTitle();
         crimeView.setIsSolved();
         crimeView.setDate();
+    }
+
+    public void showDateDialog(FragmentManager fm)
+    {
+        DatePickerFragment datePickerFragment = new DatePickerFragment();
+        datePickerFragment.show(fm,CrimePersenter.DIALOG_DATE);
     }
 }

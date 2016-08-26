@@ -7,4 +7,5 @@
     <string name="title">Title:</string>
     <string name="date">Date:</string>
     <string name="solved">Solved?</string>
+    <string name="date_picker_title">请选择日期</string>
 </resources>

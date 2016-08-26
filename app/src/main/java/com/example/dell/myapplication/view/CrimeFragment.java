@@ -4,6 +4,7 @@ package com.example.dell.myapplication.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -95,6 +96,14 @@ public class CrimeFragment extends Fragment implements ICrimeView{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 mCrimePersenter.setIsSolved();
+            }
+        });
+
+        this.mBtnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getChildFragmentManager();
+                CrimeFragment.this.mCrimePersenter.showDateDialog(fm);
             }
         });
     }
