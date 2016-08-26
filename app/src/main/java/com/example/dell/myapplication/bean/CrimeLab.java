@@ -23,6 +23,15 @@ public class CrimeLab {
         if(sCrimeLab == null)
         {
             sCrimeLab = new CrimeLab(context.getApplicationContext());  //不直接传参是为了使整个应用生命周期内Context保证存在
+
+            //TODO 以下为测试数据
+            for (int i = 0; i< 100; i++)
+            {
+                Crime crime = new Crime();
+                crime.setmCrimeTitle("标题" + i);
+                sCrimeLab.mCrimes.add(crime);
+            }
+
         }
         return sCrimeLab;
     }

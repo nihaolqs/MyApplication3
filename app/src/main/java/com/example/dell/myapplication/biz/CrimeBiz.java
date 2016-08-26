@@ -34,13 +34,7 @@ public class CrimeBiz implements ICrimeBiz{
     public ArrayList<Crime> getCrimes() {
         CrimeLab crimeLab = CrimeLab.getInstance(this.mContex);
         ArrayList<Crime> crimes = crimeLab.getCrimes();
-        //TODO 以下为测试数据
-        for (int i = 0; i< 100; i++)
-        {
-            Crime crime = new Crime();
-            crime.setmCrimeTitle("标题" + i);
-            crimes.add(crime);
-        }
+
         return crimes;
     }
 }
