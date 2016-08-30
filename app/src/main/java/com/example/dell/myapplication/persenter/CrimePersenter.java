@@ -1,11 +1,15 @@
 package com.example.dell.myapplication.persenter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.dell.myapplication.bean.Crime;
 import com.example.dell.myapplication.biz.CrimeBiz;
 import com.example.dell.myapplication.biz.ICrimeBiz;
+import com.example.dell.myapplication.util.Contance;
+import com.example.dell.myapplication.view.CrimeFragment;
 import com.example.dell.myapplication.view.DatePickerFragment;
 import com.example.dell.myapplication.view.ICrimeView;
 
@@ -96,7 +100,8 @@ public class CrimePersenter {
 
     public void showDateDialog(FragmentManager fm)
     {
-        DatePickerFragment datePickerFragment = new DatePickerFragment();
+        DatePickerFragment datePickerFragment = DatePickerFragment.getInstance(mCrime.getmDate());
+        datePickerFragment.setTargetFragment((Fragment) crimeView, CrimeFragment.REQUEST_DATE);
         datePickerFragment.show(fm,CrimePersenter.DIALOG_DATE);
     }
 }

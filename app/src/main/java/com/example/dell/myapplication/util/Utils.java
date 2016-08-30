@@ -3,6 +3,7 @@ package com.example.dell.myapplication.util;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,41 +21,5 @@ public class Utils {
         return sdf.format(date);
     }
 
-    public static class timeUtil
-    {
-        private Date mDate;
 
-        public timeUtil(Date date)
-        {
-            this.mDate = date;
-        }
-
-        public int getYear()
-        {
-            Calendar calendar = getCalendar();
-            int year = calendar.YEAR;
-            return year;
-        }
-
-        public int getMontd()
-        {
-            Calendar calendar = getCalendar();
-            int month = calendar.MONTH;
-            return month;
-        }
-
-        public int getDay()
-        {
-            Calendar calendar = getCalendar();
-            int dayOfMonth = calendar.DAY_OF_MONTH;
-            return dayOfMonth;
-        }
-
-        @NonNull
-        private Calendar getCalendar() {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(this.mDate);
-            return calendar;
-        }
-    }
 }

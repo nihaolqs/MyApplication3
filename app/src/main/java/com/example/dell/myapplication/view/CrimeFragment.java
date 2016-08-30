@@ -32,6 +32,8 @@ import java.util.UUID;
 public class CrimeFragment extends Fragment implements ICrimeView{
 
 //    private Crime mCrime;
+    public static final int REQUEST_DATE = 0;
+
     private View mLayout;
     private EditText mEtCrimeTitle;
     private CrimePersenter mCrimePersenter;

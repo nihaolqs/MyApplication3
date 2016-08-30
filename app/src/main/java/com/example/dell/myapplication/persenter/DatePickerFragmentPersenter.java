@@ -1,7 +1,11 @@
 package com.example.dell.myapplication.persenter;
 
+import android.support.annotation.NonNull;
+import android.widget.DatePicker;
+
 import com.example.dell.myapplication.view.IDatePickerView;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -24,5 +28,29 @@ public class DatePickerFragmentPersenter {
     public Date getChooseTime()
     {
         return this.mDate;
+    }
+
+    @NonNull
+    private Calendar getCalendar() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(this.mDate);
+        return calendar;
+    }
+
+    public void setTime2DatePicker(DatePicker datePicker)
+    {
+        Calendar calendar = getCalendar();
+        datePicker.updateDate(calendar.YEAR,calendar.MONTH,calendar.DAY_OF_MONTH);
+    }
+
+    public void getDate4DatePicker(DatePicker datePicker)
+    {
+        Calendar calendar = getCalendar();
+        calendar.set(datePicker.getYear(),datePicker.getMonth(),datePicker.getDayOfMonth());
+        Date time = calendar.getTime();
+        if (time != null)
+        {
+            this.mDate = time;
+        }
     }
 }
