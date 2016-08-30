@@ -66,9 +66,7 @@ public class DatePickerFragment extends DialogFragment implements IDatePickerVie
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 mDatePickerFragmentPersenter.getDate4DatePicker(mDatePicker);
                 //保存状态防止屏幕旋转时消失
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Contance.CRIME_DATE_DIALOG_KEY,mDatePickerFragmentPersenter.getChooseTime());
-                setArguments(bundle);
+
             }
         });
 
@@ -76,7 +74,7 @@ public class DatePickerFragment extends DialogFragment implements IDatePickerVie
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Date time = mDatePickerFragmentPersenter.getChooseTime();
-                s
+
             }
         };
         AlertDialog dialog = new AlertDialog.Builder(getContext())
