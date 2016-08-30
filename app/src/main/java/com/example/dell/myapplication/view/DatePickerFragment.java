@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CalendarView;
@@ -57,6 +58,9 @@ public class DatePickerFragment extends DialogFragment implements IDatePickerVie
         Bundle arguments = getArguments();
 
         Date date = (Date) arguments.getSerializable(Contance.CRIME_DATE_DIALOG_KEY);
+
+        Log.e("Date",date.toString());
+
         mDatePickerFragmentPersenter.changeTime(date);
 
         mDatePickerFragmentPersenter.setTime2DatePicker(mDatePicker);
@@ -66,7 +70,6 @@ public class DatePickerFragment extends DialogFragment implements IDatePickerVie
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 mDatePickerFragmentPersenter.getDate4DatePicker(mDatePicker);
                 //保存状态防止屏幕旋转时消失
-
             }
         });
 
@@ -74,7 +77,9 @@ public class DatePickerFragment extends DialogFragment implements IDatePickerVie
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Date time = mDatePickerFragmentPersenter.getChooseTime();
-
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable(Contance.CRIME_DATE_DIALOG_KEY,mDatePickerFragmentPersenter.getChooseTime());
+//                setArguments(bundle);
             }
         };
         AlertDialog dialog = new AlertDialog.Builder(getContext())
