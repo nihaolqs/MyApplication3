@@ -1,6 +1,7 @@
 package com.example.dell.myapplication.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -145,5 +146,12 @@ public class CrimeFragment extends Fragment implements ICrimeView{
     public void setDate() {
         Date date = mCrimePersenter.getDate();
         this.mBtnDate.setText(Utils.DateFormat(date));
+    }
+
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCrimePersenter.getDateDialogResult(requestCode, resultCode, data);
     }
 }

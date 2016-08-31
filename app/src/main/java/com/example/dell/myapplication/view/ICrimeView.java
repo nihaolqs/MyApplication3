@@ -1,5 +1,9 @@
 package com.example.dell.myapplication.view;
 
+import android.content.Intent;
+
+import java.util.Date;
+
 /**
  * Created by dell on 2016/8/24.
  */
@@ -9,5 +13,4 @@ public interface ICrimeView {
     boolean getIsSolved();
     void setIsSolved();
     void setDate();
-
 }

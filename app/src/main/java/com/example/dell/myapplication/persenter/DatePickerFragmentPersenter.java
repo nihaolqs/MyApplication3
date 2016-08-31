@@ -18,7 +18,7 @@ public class DatePickerFragmentPersenter {
 
     public DatePickerFragmentPersenter(IDatePickerView datePickerView) {
         this.datePickerView = datePickerView;
-        this.mDate = datePickerView.getDate();
+//        this.mDate = datePickerView.getDate();
     }
 
     public void changeTime(Date date)
@@ -38,21 +38,14 @@ public class DatePickerFragmentPersenter {
         return calendar;
     }
 
-    public void setTime2DatePicker(DatePicker datePicker)
+    public void setTime2DatePicker()
     {
-        Calendar calendar = getCalendar();
-//        Log.e("setTime2DatePicker","" +" "+ calendar.YEAR  +" "+ calendar.MONTH +" "+ calendar.DAY_OF_MONTH);  TODO 请勿再犯
-        datePicker.updateDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH) + 1,calendar.get(Calendar.DAY_OF_MONTH));
+        this.datePickerView.setDate(this.mDate);
     }
 
-    public void getDate4DatePicker(DatePicker datePicker)
+    public void getDate4DatePicker()
     {
-        Calendar calendar = getCalendar();
-        calendar.set(datePicker.getYear(),datePicker.getMonth()-1,datePicker.getDayOfMonth());
-        Date time = calendar.getTime();
-        if (time != null)
-        {
-            this.mDate = time;
-        }
+        Date date = this.datePickerView.getDate();
+        this.mDate = date;
     }
 }

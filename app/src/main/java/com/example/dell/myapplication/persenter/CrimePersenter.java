@@ -1,6 +1,7 @@
 package com.example.dell.myapplication.persenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import com.example.dell.myapplication.view.CrimeFragment;
 import com.example.dell.myapplication.view.DatePickerFragment;
 import com.example.dell.myapplication.view.ICrimeView;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,6 +25,8 @@ import java.util.UUID;
  */
 public class CrimePersenter {
     private static final String DIALOG_DATE = "date";
+    public static final int DIALOG_DATE_REQUEST_CODE = 0;
+    public static final String RESQUEST_KEY = "key";
     private ICrimeView crimeView;
     private ICrimeBiz crimeBiz;
     private Crime mCrime;
@@ -101,7 +105,18 @@ public class CrimePersenter {
     public void showDateDialog(FragmentManager fm)
     {
         DatePickerFragment datePickerFragment = DatePickerFragment.getInstance(mCrime.getmDate());
+        datePickerFragment.setTargetFragment((Fragment) this.crimeView,this.DIALOG_DATE_REQUEST_CODE);
         datePickerFragment.setTargetFragment((Fragment) crimeView, CrimeFragment.REQUEST_DATE);
         datePickerFragment.show(fm,CrimePersenter.DIALOG_DATE);
+    }
+
+    public void getDateDialogResult(int requestCode, int resultCode, Intent data)
+    {
+        if(requestCode == this.DIALOG_DATE_REQUEST_CODE)
+        {
+            Date date = (Date) data.getSerializableExtra(this.RESQUEST_KEY);
+            this.mCrime.setmDate(date);
+            this.crimeView.setDate();
+        }
     }
 }
